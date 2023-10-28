@@ -1,47 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import yujinImage from "../photo/yujin4.png";
 import yujinImage2 from "../photo/yujin3.png";
-import { useNavigate } from "react-router-dom";
-
-function Firstpage() {
-  const [animateText, setAnimateText] = useState(false);
-  const [animateImage, setAnimateImage] = useState(false);
-  const navigate = useNavigate();
-  useEffect(() => {
-    // 3초 후에 텍스트 애니메이션 시작
-    const textAnimationTimeout = setTimeout(() => {
-      setAnimateText(true);
-    }, 2000);
-
-    // 4초 후에 이미지를 표시하고 이미지 애니메이션 시작
-    const imageTimeout = setTimeout(() => {
-      setAnimateImage(true);
-    }, 2500);
-
-    return () => {
-      clearTimeout(textAnimationTimeout);
-      clearTimeout(imageTimeout);
-    };
-  }, []);
-
-  const clickNavigate = () => {
-    navigate("/about");
-  };
-  return (
-    <Introbox>
-      <Myintro>
-        <IntroText animateText={animateText} onClick={clickNavigate}>
-          안 녕 하 세 요, <br />
-          <br />정 유 진 입 니 다.
-        </IntroText>
-        {animateImage && <IntroImage />}
-      </Myintro>
-    </Introbox>
-  );
-}
-
-export default Firstpage;
+import yujinImage from "../photo/yujin4.png";
 
 const slideInFromBottom = keyframes`
   from {
@@ -56,21 +16,26 @@ const slideOutAndShrinkToLeft = keyframes`
   0% {
     transform: translateX(0);
     font-size: 7rem;
+    margin-left: 0;
+    margin-right: 0;
   }
   50% {
-    transform: translateX(-100%);
+    transform: translateX(-20%);
     font-size: 4rem;
-    margin-left: -10rem;
+    margin-left: 17rem;
+    margin-right: 5rem;
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
     font-size: 4rem;
+    margin-left: 17rem;
+    margin-right: 5rem;
   }
 `;
 
 const slideInFromRight = keyframes`
   from {
-    transform: translateX(100%);
+    transform: translateX(0);
   }
   to {
     transform: translateX(0);
@@ -91,7 +56,7 @@ const Myintro = styled.div`
 `;
 
 const IntroText = styled.div`
-  font-size: 7rem;
+  font-size: 8rem;
   color: #d1d1d1;
   animation: ${(props) =>
       props.animateText ? slideOutAndShrinkToLeft : "none"}
@@ -100,17 +65,51 @@ const IntroText = styled.div`
 `;
 
 const IntroImage = styled.div`
-  width: 25rem;
-  height: 40rem;
+  width: 20rem;
+  height: 38rem;
+  margin-top: 1rem;
   margin-bottom: -5rem;
-  margin-right: -38rem;
-  background-image: url(${(props) =>props.hovered ? yujinImage : yujinImage2});
+  background-image: url(${(props) =>
+    props.hovered ? yujinImage : yujinImage2});
   background-size: cover;
-  /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); // 항상 그림자 추가 */
   animation: ${(props) => (props.animateImage ? slideInFromRight : "none")} 1s
     ease;
-  transition: background-image 0.3s ease; // 호버 전환 효과를 위한 트랜지션 추가
+  transition: background-image 0.3s ease;
   &:hover {
-    background-image: url(${yujinImage}); // 호버 시 이미지 변경
+    background-image: url(${yujinImage});
   }
 `;
+
+function Firstpage() {
+  const [animateText, setAnimateText] = useState(false);
+  const [animateImage, setAnimateImage] = useState(false);
+
+  useEffect(() => {
+    const textAnimationTimeout = setTimeout(() => {
+      setAnimateText(true);
+    }, 2000);
+
+    const imageTimeout = setTimeout(() => {
+      setAnimateImage(true);
+    }, 2500);
+
+    return () => {
+      clearTimeout(textAnimationTimeout);
+      clearTimeout(imageTimeout);
+    };
+  }, []);
+
+  return (
+    <Introbox>
+      <Myintro>
+        <IntroText animateText={animateText}>
+          안 녕 하 세 요, <br />
+          <br />정 유 진 입 니 다.
+        </IntroText>
+        {animateImage && <IntroImage />}
+      </Myintro>
+    </Introbox>
+  );
+}
+
+export default Firstpage;

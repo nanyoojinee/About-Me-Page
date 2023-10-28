@@ -8,7 +8,7 @@ const WholeBack = styled.div`
   width: 100%;
   height: 80vh;
   padding-top: 10rem;
-  position: relative; /* 자식 엘리먼트의 위치를 상대적으로 설정하기 위해 필요합니다. */
+  position: relative;
 `;
 const EarthImg = styled.div`
   position: absolute;

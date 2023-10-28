@@ -4,24 +4,30 @@ import Firstpage from "./main/Firstpage.jsx";
 import Secondpage from "./main/Secondpage.jsx";
 import Thirdpage from "./main/Thirdpage.jsx";
 import Fourthpage from "./main/Fourthpage.jsx";
+import About from "./About.jsx";
+import Portfolio from "./Portfolio.jsx";
+import Contact from "./Contact.jsx";
 
 function Mainpage() {
-  const [currentPage, setCurrentPage] = useState(0); // 현재 페이지를 추적
-
-  // 스크롤 이벤트 핸들러
+  const [currentPage, setCurrentPage] = useState(0);
   const handleScroll = () => {
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
 
-    // 페이지 위치에 따라 현재 페이지 설정
     if (scrollY < windowHeight) {
       setCurrentPage(0);
     } else if (scrollY < 2 * windowHeight) {
       setCurrentPage(1);
     } else if (scrollY < 3 * windowHeight) {
       setCurrentPage(2);
-    } else {
+    } else if (scrollY < 4 * windowHeight) {
       setCurrentPage(3);
+    } else if (scrollY < 5 * windowHeight) {
+      setCurrentPage(4);
+    } else if (scrollY < 6 * windowHeight) {
+      setCurrentPage(5);
+    } else {
+      setCurrentPage(6);
     }
   };
 
@@ -41,6 +47,9 @@ function Mainpage() {
         <Secondpage isVisible={currentPage === 1} />
         <Thirdpage isVisible={currentPage === 2} />
         <Fourthpage isVisible={currentPage === 3} />
+        <About isVisible={currentPage === 4} />
+        <Portfolio isVisible={currentPage === 5} />
+        <Contact isVisible={currentPage === 6} />
       </WholePage>
     </div>
   );

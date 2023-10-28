@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 function Header() {
+  const handleScrollToPage = (pageNumber, e) => {
+    e.preventDefault();
+    const windowHeight = window.innerHeight;
+    const scrollTo = windowHeight * pageNumber;
+    window.scrollTo({ top: scrollTo, behavior: "smooth" });
+  };
+
   return (
     <HeaderWrapper>
       <Logo>
@@ -10,13 +17,19 @@ function Header() {
       <Navigation>
         <ul>
           <li>
-            <a href="about">About</a>
+            <a href="#" onClick={(e) => handleScrollToPage(3, e)}>
+              About
+            </a>
           </li>
           <li>
-            <a href="portfolio">Portfolio</a>
+            <a href="#" onClick={(e) => handleScrollToPage(4.1, e)}>
+              Portfolio
+            </a>
           </li>
           <li>
-            <a href="contact">Contact</a>
+            <a href="#" onClick={(e) => handleScrollToPage(6.5, e)}>
+              Contact
+            </a>
           </li>
         </ul>
       </Navigation>
@@ -33,10 +46,10 @@ const HeaderWrapper = styled.header`
   padding-top: 1rem;
   display: flex;
   justify-content: space-between;
-  position: fixed; /* 헤더를 화면 상단에 고정 */
-  width: 99%; /* 전체 너비를 차지하도록 설정 */
-  top: 0; /* 화면 상단에 배치 */
-  z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+  position: fixed;
+  width: 99%;
+  top: 0;
+  z-index: 1000;
 `;
 
 const Logo = styled.div`

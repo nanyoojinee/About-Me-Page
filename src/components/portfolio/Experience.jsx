@@ -5,19 +5,18 @@ import earth from "../photo/earth.png";
 import knocklogo from "../photo/knocklogo.png";
 const RightSection = styled.div`
   flex: 1;
-  padding: 4rem 4rem;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* 그림자 효과 추가 */
-  margin: 2rem 2rem;
-  height: 70vh;
+  padding: 2rem 2rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  margin: 1rem 1rem;
+  height: 90vh;
   background-color: #ffd500;
-  position: relative; /* 상대 위치 지정 */
-  border: 3px solid black; /* 검은색 보더 추가 */
-  overflow: hidden; /* 자식 엘리먼트가 부모 밖으로 넘치지 않도록 합니다. */
-  transition: transform 0.3s ease-in-out; /* transform 속성에 대한 애니메이션 효과 설정 */
-  cursor: pointer;
+  position: relative;
+  border: 3px solid black;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
 
   &:hover {
-    transform: scale(1.05); /* 마우스 호버 시 크기를 1.05배로 확대 */
+    transform: scale(1.05);
   }
 `;
 const Header = styled.div`
@@ -29,7 +28,7 @@ const Header = styled.div`
   padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
-  border-bottom: 3px solid black; /* 헤더 아래에 검은색 보더 추가 */
+  border-bottom: 3px solid black;
 `;
 const CirclesContainer = styled.div`
   display: flex;
@@ -44,10 +43,10 @@ const Circle = styled.div`
   border: 3px solid black;
   border-radius: 50%;
   background-color: ${(props) => props.color};
+  cursor: pointer;
 `;
 
 const ImageContainer = styled.div`
-  cursor: pointer;
   margin-top: 2rem;
   &:hover {
     transform: translateZ(10px);
@@ -61,17 +60,23 @@ const ImgBox = styled.div`
   img {
     width: 10rem;
     height: auto;
-    overflow: hidden; /* 자식 엘리먼트가 부모 밖으로 넘치지 않도록 합니다. */
-    transition: transform 0.3s ease-in-out; /* transform 속성에 대한 애니메이션 효과 설정 */
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
     cursor: pointer;
 
     &:hover {
-      transform: scale(1.1); /* 마우스 호버 시 크기를 1.05배로 확대 */
+      transform: scale(1.1);
     }
   }
 `;
 
-function Experience({ exOpenModal }) {
+const Text = styled.p`
+  color: #ffffff;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+`;
+function Experience({ exOpenModal, closeModal }) {
   const ClickToEarth = () => {
     window.open(
       "https://www.notion.so/592b34173cf446e798a54a1dd30e3232?pvs=4",
@@ -91,17 +96,16 @@ function Experience({ exOpenModal }) {
     );
   };
   return (
-    <RightSection onClick={exOpenModal}>
+    <RightSection>
       <Header>
-        {/* 헤더 영역에 노란색 동그라미와 하늘색 동그라미 추가 */}
-        <CirclesContainer>
+        <CirclesContainer onClick={closeModal}>
           <Circle color="yellow"></Circle>
           <Circle color="skyblue"></Circle>
         </CirclesContainer>
       </Header>
-      <h1>Experience</h1>
-      <ImageContainer>
-        <h2>ProjectManager</h2>
+      <h3 onClick={exOpenModal}>Experience</h3>
+      <ImageContainer onClick={exOpenModal}>
+        <h3>ProjectManager</h3>
         <ImgBox>
           <img
             src={selectstar}
@@ -114,9 +118,10 @@ function Experience({ exOpenModal }) {
             }}
           />
         </ImgBox>
+        <Text>Click to open the Notion link!</Text>
       </ImageContainer>
-      <ImageContainer>
-        <h2>FrontEnd</h2>
+      <ImageContainer onClick={exOpenModal}>
+        <h3>FrontEnd</h3>
         <ImgBox>
           <img
             src={earth}

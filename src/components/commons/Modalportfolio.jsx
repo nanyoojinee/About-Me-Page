@@ -6,26 +6,26 @@ const WholeBack = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: fixed; /* 모달을 고정 위치로 표시 */
-  top: 0;
-  left: 0;
+  margin-top: 13rem;
   width: 100%;
   height: 100%;
-  background-color: #699bf7; /* 회색 투명 배경 */
+  margin-bottom: 10rem;
 `;
 const ModalBackground = styled.div`
-  width: 35%;
-  height: 65vh;
-  background-color: rgb(23, 23, 253); /* 파란색 배경 */
+  width: 30rem;
+  height: 67vh;
+  background-color: rgb(23, 23, 253);
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  padding-bottom: 1rem;
 `;
 
 const ModalContainer = styled.div`
-  background-color: #ccc; /* 회색 네모 */
+  background-color: #ccc;
   width: 100%;
   height: 50vh;
   margin-bottom: -2rem;
@@ -71,9 +71,9 @@ const CloseButton = styled.button`
   border-color: white;
   width: 30px;
   height: 30px;
-  position: absolute;
-  top: 135px;
-  right: 435px;
+  margin-left: 25rem;
+  margin-top: -2rem;
+  margin-bottom: 1rem;
   cursor: pointer;
 `;
 
@@ -99,8 +99,8 @@ function ModalPort({ exOpenModal, skillOpenModal, closeModal }) {
   return (
     <WholeBack>
       <ModalBackground>
+        <CloseButton onClick={closeModal}>x</CloseButton>
         <ModalContainer>
-          <CloseButton onClick={closeModal}>x</CloseButton>
           <ModalText>What do you want to know?</ModalText>
           <MarioImage />
           <ButtonContainer>

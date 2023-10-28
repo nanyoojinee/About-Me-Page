@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import iphone from "../photo/iphone.png";
 import Knock from "../photo/knock.gif";
-import { useNavigate } from "react-router-dom";
-// 슬라이드 인 애니메이션 키프레임 정의
+
 const slideInFromRight = keyframes`
   from {
     transform: translateX(100%);
@@ -12,14 +11,64 @@ const slideInFromRight = keyframes`
   to {
     transform: translateX(0);
     opacity: 1;
+    font-size: 7rem;
   }
+`;
+
+const Myskill = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+`;
+
+const FrontText = styled.div`
+  position: absolute;
+  left: 2%;
+  z-index: 2;
+  font-size: 7rem;
+  color: #d1d1d1;
+
+  animation: ${slideInFromRight} 1s ease;
+`;
+const EndText = styled.div`
+  position: absolute;
+  right: 5%;
+  z-index: 2;
+  font-size: 8rem;
+  color: #d1d1d1;
+
+  animation: ${slideInFromRight} 1s ease;
+`;
+const IphoneImage = styled.div`
+  background-image: url(${iphone});
+  background-size: cover;
+  width: 20rem;
+  min-width: 20rem;
+  border-radius: 3rem;
+  margin-top: 5rem;
+  height: 92.5vh;
+  position: absolute;
+  z-index: 1;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+`;
+const KnockImage = styled.div`
+  background-image: url(${Knock});
+  background-size: cover;
+  border-radius: 2rem;
+  width: 18rem;
+  min-width: 18rem;
+  height: 87vh;
+  margin-left: 0.3rem;
+  position: absolute;
+  z-index: 0;
+  margin-top: 5rem;
 `;
 
 function Secondpage() {
   const [animateFrontText, setAnimateFrontText] = useState(false);
   const [animateEndText, setAnimateEndText] = useState(false);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,17 +87,12 @@ function Secondpage() {
     };
   }, []);
 
-  const clickNavigate = () => {
-    navigate("/portfolio");
-  };
   return (
     <div>
       <Myskill>
-        {animateFrontText && (
-          <FrontText onClick={clickNavigate}>FRONT</FrontText>
-        )}
-        <KnockImage onClick={clickNavigate} />
-        {animateEndText && <EndText onClick={clickNavigate}>END</EndText>}
+        {animateFrontText && <FrontText>FRONT</FrontText>}
+        <KnockImage />
+        {animateEndText && <EndText>END</EndText>}
         <IphoneImage />
       </Myskill>
     </div>
@@ -56,52 +100,3 @@ function Secondpage() {
 }
 
 export default Secondpage;
-
-const Myskill = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  position: relative;
-`;
-
-const FrontText = styled.div`
-  position: absolute;
-  left: 6%;
-  z-index: 2;
-  font-size: 8rem;
-  color: #d1d1d1;
-
-  animation: ${slideInFromRight} 1s ease;
-`;
-
-const KnockImage = styled.div`
-  background-image: url(${Knock});
-  background-size: cover;
-  border-radius: 2rem;
-  width: 19rem;
-  height: 39rem;
-  position: absolute;
-  z-index: 0;
-`;
-
-const IphoneImage = styled.div`
-  background-image: url(${iphone});
-  background-size: cover;
-  width: 20rem;
-  border-radius: 3rem;
-  height: 91vh;
-  position: absolute;
-  z-index: 1;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
-`;
-
-const EndText = styled.div`
-  position: absolute;
-  right: 13%;
-  z-index: 2;
-  font-size: 8rem;
-  color: #d1d1d1;
-
-  animation: ${slideInFromRight} 1s ease;
-`;

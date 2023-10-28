@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import mac from "../photo/mac.png";
-// import Knock from "../photo/knock.gif";
+import datavideo from "../photo/datavideo.mp4";
 
-// 슬라이드 인 애니메이션 키프레임 정의
 const slideInFromRight = keyframes`
   from {
     transform: translateX(100%);
@@ -14,37 +13,6 @@ const slideInFromRight = keyframes`
     opacity: 1;
   }
 `;
-
-function Thirdpage() {
-  const [animateFrontText, setAnimateFrontText] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const showFrontText = scrollY > 600;
-
-      setAnimateFrontText(showFrontText);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  return (
-    <div>
-      <Myskill>
-        {animateFrontText && <FrontText>DATA</FrontText>}
-        {/* <KnockImage /> */}
-        <MacImage />
-      </Myskill>
-    </div>
-  );
-}
-
-export default Thirdpage;
 
 const Myskill = styled.div`
   display: flex;
@@ -57,30 +25,62 @@ const Myskill = styled.div`
 const FrontText = styled.div`
   position: absolute;
   color: #d1d1d1;
-
   left: 6%;
   z-index: 2;
   font-size: 8rem;
   animation: ${slideInFromRight} 1s ease;
 `;
 
-// const KnockImage = styled.div`
-//   background-image: url(${Knock});
-//   background-size: cover;
-//   border-radius: 2rem;
-//   width: 17rem;
-//   height: 33rem;
-//   position: absolute;
-//   z-index: 0;
-// `;
-
 const MacImage = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url(${mac});
   background-size: cover;
   width: 60rem;
   border-radius: 3rem;
-  height: 80vh;
+  height: 70vh;
   position: absolute;
   z-index: 1;
-  right: 1rem;
+  margin-right: -20rem;
 `;
+
+const Video = styled.video`
+  justify-content: center;
+  align-items: center;
+  max-width: 43rem;
+  max-height: 60vh;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+`;
+
+function Thirdpage() {
+  const [animateFrontText, setAnimateFrontText] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const showFrontText = scrollY > 800;
+
+      setAnimateFrontText(showFrontText);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  return (
+    <Myskill>
+      {animateFrontText && <FrontText>DATA</FrontText>}
+      <MacImage>
+        <Video autoPlay loop muted>
+          <source src={datavideo} type="video/mp4" />
+        </Video>
+      </MacImage>
+    </Myskill>
+  );
+}
+
+export default Thirdpage;

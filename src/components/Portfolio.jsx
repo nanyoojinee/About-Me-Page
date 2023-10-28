@@ -10,24 +10,25 @@ const WholeBack = styled.div`
   padding: 5rem;
   height: 100vh;
   background-color: #699bf7;
+  margin-bottom: 10rem;
 `;
 
-function PortfolioModal() {
+function Portfolio() {
   const [isModalOpen, setIsModalOpen] = useState(true);
   const [isSkillModalOpen, setIsSkillModalOpen] = useState(false);
   const [isExModalOpen, setIsExModalOpen] = useState(false);
 
   const closeModal = () => {
-    setIsModalOpen(false);
+    setIsModalOpen((prevModal) => !prevModal);
   };
 
   const exOpenModal = () => {
     setIsExModalOpen((prevModal) => !prevModal);
-    setIsSkillModalOpen(false); // 경험 섹션을 열면 스킬 섹션 닫기
+    setIsSkillModalOpen(false);
   };
   const skillOpenModal = () => {
     setIsSkillModalOpen((prevModal) => !prevModal);
-    setIsExModalOpen(false); // 스킬 섹션을 열면 경험 섹션 닫기
+    setIsExModalOpen(false);
   };
 
   return (
@@ -41,12 +42,16 @@ function PortfolioModal() {
       )}
       {!isModalOpen && (
         <WholeBack>
-          {!isExModalOpen && <Skill skillOpenModal={skillOpenModal} />}
-          {!isSkillModalOpen && <Experience exOpenModal={exOpenModal} />}
+          {!isExModalOpen && (
+            <Skill skillOpenModal={skillOpenModal} closeModal={closeModal} />
+          )}
+          {!isSkillModalOpen && (
+            <Experience exOpenModal={exOpenModal} closeModal={closeModal} />
+          )}
         </WholeBack>
       )}
     </>
   );
 }
 
-export default PortfolioModal;
+export default Portfolio;

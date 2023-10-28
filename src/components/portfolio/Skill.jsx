@@ -23,19 +23,18 @@ import mysql from "../photo/noticon/mysql.png";
 
 const LeftSection = styled.div`
   flex: 1;
-  padding: 4rem 4rem;
+  padding: 2rem 2rem;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  margin: 2rem 2rem;
-  height: 70vh;
+  margin: 1rem 1rem;
+  height: 90vh;
   background-color: #ffd500;
-  position: relative; /* 상대 위치 지정 */
-  border: 3px solid black; /* 검은색 보더 추가 */
-  overflow: hidden; /* 자식 엘리먼트가 부모 밖으로 넘치지 않도록 합니다. */
-  transition: transform 0.3s ease-in-out; /* transform 속성에 대한 애니메이션 효과 설정 */
-  cursor: pointer;
+  position: relative;
+  border: 3px solid black;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
 
   &:hover {
-    transform: scale(1.05); /* 마우스 호버 시 크기를 1.05배로 확대 */
+    transform: scale(1.05);
   }
 `;
 
@@ -48,7 +47,7 @@ const Header = styled.div`
   padding: 0.5rem 1rem;
   display: flex;
   justify-content: space-between;
-  border-bottom: 3px solid black; /* 헤더 아래에 검은색 보더 추가 */
+  border-bottom: 3px solid black;
 `;
 
 const CirclesContainer = styled.div`
@@ -64,10 +63,10 @@ const Circle = styled.div`
   border: 3px solid black;
   border-radius: 50%;
   background-color: ${(props) => props.color};
+  cursor: pointer;
 `;
 
 const ImageContainer = styled.div`
-  cursor: pointer;
   &:hover {
     transform: translateZ(10px);
   }
@@ -78,23 +77,22 @@ const ImgBox = styled.div`
   align-items: row;
   justify-content: space-around;
   img {
-    margin-right: 0.8rem;
-    margin-bottom: 1rem;
+    margin-right: 0.6rem;
+    margin-bottom: 0.1rem;
 
     width: 3rem;
     height: auto;
-    overflow: hidden; /* 자식 엘리먼트가 부모 밖으로 넘치지 않도록 합니다. */
-    transition: transform 0.3s ease-in-out; /* transform 속성에 대한 애니메이션 효과 설정 */
-    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
 
     &:hover {
-      transform: scale(1.5); /* 마우스 호버 시 크기를 1.05배로 확대 */
+      transform: scale(1.5);
     }
   }
 `;
 const ImgWithText = styled.div`
   position: relative;
-  cursor: pointer;
+
   &:hover {
     .text {
       opacity: 1;
@@ -109,7 +107,6 @@ const ImgWithText = styled.div`
     height: auto;
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
-    cursor: pointer;
 
     &:hover {
       transform: scale(1.5);
@@ -139,131 +136,118 @@ const ImgWithText = styled.div`
     z-index: 1;
   }
 `;
-function Skill({ skillOpenModal }) {
-  const navigate = useNavigate();
-  const ClickToEarth = () => {
-    window.open(
-      "https://www.notion.so/592b34173cf446e798a54a1dd30e3232?pvs=4",
-      "_blank"
-    );
-  };
-  const ClickToKnock = () => {
-    window.open(
-      "https://www.notion.so/knock-knock-530add3f87f44f18a09bc98a7a2b6095?pvs=4",
-      "_blank"
-    );
-  };
+function Skill({ skillOpenModal, closeModal }) {
   return (
-    <LeftSection onClick={skillOpenModal}>
+    <LeftSection>
       <Header>
-        <CirclesContainer>
+        <CirclesContainer onClick={closeModal}>
           <Circle color="yellow"></Circle>
           <Circle color="skyblue"></Circle>
         </CirclesContainer>
       </Header>
-      <h1>Skills</h1>
-      <ImageContainer>
-        <h2>FrontEnd</h2>
+      <h2 onClick={skillOpenModal}>Skills</h2>
+      <ImageContainer onClick={skillOpenModal}>
+        <h3>FrontEnd</h3>
         <ImgBox>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={js} alt="JavaScript" />
             <div className="overlay"></div>
             <p className="text">JavaScript</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={html} alt="HTML" />
             <div className="overlay"></div>
             <p className="text">HTML</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={react} alt="React" />
             <div className="overlay"></div>
             <p className="text">React</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={css} alt="CSS" />
             <div className="overlay"></div>
             <p className="text">CSS</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={socket} alt="Socket.IO" />
             <div className="overlay"></div>
             <p className="text">Socket.IO</p>
           </ImgWithText>
         </ImgBox>
-        <h2>DataBase</h2>
+        <h3>DataBase</h3>
         <ImgBox>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={python} alt="Python" />
             <div className="overlay"></div>
             <p className="text">Python</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={mongodb} alt="MongoDB" />
             <div className="overlay"></div>
             <p className="text">MongoDB</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={mysql} alt="MySQL" />
             <div className="overlay"></div>
             <p className="text">MySQL</p>
           </ImgWithText>
         </ImgBox>
-        <h2>Etc</h2>
+        <h3>Etc</h3>
         <ImgBox>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={googledrive} alt="Google Drive" />
             <div className="overlay"></div>
             <p className="text">Google Drive</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={excel} alt="Excel" />
             <div className="overlay"></div>
             <p className="text">Excel</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={jira} alt="Jira" />
             <div className="overlay"></div>
             <p className="text">Jira</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={gitlab} alt="GitLab" />
             <div className="overlay"></div>
             <p className="text">GitLab</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={github} alt="Github" />
             <div className="overlay"></div>
             <p className="text">GitHub</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={slack} alt="Slack" />
             <div className="overlay"></div>
             <p className="text">Slack</p>
           </ImgWithText>
         </ImgBox>
         <ImgBox>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={notion} alt="Notion" />
             <div className="overlay"></div>
             <p className="text">Notion</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={ps} alt="Photoshop" />
             <div className="overlay"></div>
             <p className="text">Photoshop</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={visual} alt="Visual Studio Code" />
             <div className="overlay"></div>
             <p className="text">Visual Studio Code</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={pycharm} alt="PyCharm" />
             <div className="overlay"></div>
             <p className="text">PyCharm</p>
           </ImgWithText>
-          <ImgWithText onClick={ClickToEarth}>
+          <ImgWithText>
             <img src={git} alt="Git" />
             <div className="overlay"></div>
             <p className="text">Git</p>
