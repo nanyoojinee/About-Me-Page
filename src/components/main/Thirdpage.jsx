@@ -48,7 +48,8 @@ const MacImage = styled.div`
 const Video = styled.video`
   justify-content: center;
   align-items: center;
-  max-width: 43rem;
+  width: 41rem;
+  max-width: 41rem;
   max-height: 60vh;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 `;

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 import react from "../photo/noticon/react.png";
 import python from "../photo/noticon/python.png";
 import js from "../photo/noticon/js1.png";

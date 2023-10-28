@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Firstpage from "./main/Firstpage.jsx";
 import Secondpage from "./main/Secondpage.jsx";
 import Thirdpage from "./main/Thirdpage.jsx";
-import Fourthpage from "./main/Fourthpage.jsx";
 import About from "./About.jsx";
 import Portfolio from "./Portfolio.jsx";
 import Contact from "./Contact.jsx";
@@ -32,10 +31,8 @@ function Mainpage() {
   };
 
   useEffect(() => {
-    // 스크롤 이벤트 리스너 등록
     window.addEventListener("scroll", handleScroll);
     return () => {
-      // 컴포넌트 언마운트 시 이벤트 리스너 제거
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -46,7 +43,7 @@ function Mainpage() {
         <Firstpage isVisible={currentPage === 0} />
         <Secondpage isVisible={currentPage === 1} />
         <Thirdpage isVisible={currentPage === 2} />
-        <Fourthpage isVisible={currentPage === 3} />
+
         <About isVisible={currentPage === 4} />
         <Portfolio isVisible={currentPage === 5} />
         <Contact isVisible={currentPage === 6} />

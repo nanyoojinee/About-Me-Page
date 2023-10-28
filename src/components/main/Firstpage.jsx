@@ -69,8 +69,7 @@ const IntroImage = styled.div`
   height: 38rem;
   margin-top: 1rem;
   margin-bottom: -5rem;
-  background-image: url(${(props) =>
-    props.hovered ? yujinImage : yujinImage2});
+  background-image: url(${(props) =>props.hovered ? yujinImage : yujinImage2});
   background-size: cover;
   animation: ${(props) => (props.animateImage ? slideInFromRight : "none")} 1s
     ease;

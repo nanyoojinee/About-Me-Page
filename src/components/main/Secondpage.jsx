@@ -44,8 +44,8 @@ const EndText = styled.div`
 const IphoneImage = styled.div`
   background-image: url(${iphone});
   background-size: cover;
-  width: 20rem;
-  min-width: 20rem;
+  width: 22rem;
+  min-width: 21rem;
   border-radius: 3rem;
   margin-top: 5rem;
   height: 92.5vh;
@@ -57,8 +57,8 @@ const KnockImage = styled.div`
   background-image: url(${Knock});
   background-size: cover;
   border-radius: 2rem;
-  width: 18rem;
-  min-width: 18rem;
+  width: 19rem;
+  min-width: 19rem;
   height: 87vh;
   margin-left: 0.3rem;
   position: absolute;

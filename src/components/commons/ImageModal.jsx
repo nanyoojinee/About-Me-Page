@@ -25,7 +25,7 @@ const ModalContent = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   text-align: center;
 `;
-
+const MyImg = styled.img``;
 const ImageModal = ({ num, closeModal }) => {
   let imageUrl;
 
@@ -44,7 +44,7 @@ const ImageModal = ({ num, closeModal }) => {
   return (
     <ModalWrapper onClick={closeModal}>
       <ModalContent>
-        <img
+        <MyImg
           src={imageUrl}
           alt={`Image ${num}`}
           style={{ width: "40rem", height: "25rem" }}
